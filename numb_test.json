@@ -1,0 +1,211 @@
+{
+    "status": "success",
+    "data": {
+        "count": 8,
+        "items": [
+            {
+                "source": {
+                    "database": "border_crossing",
+                    "collection": "2023"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "65562ed2815e67510c0e4c02"
+                            },
+                            "birth_date": "06.09.1972",
+                            "phone": "+79505246441",
+                            "full_name": "\u041a\u0430\u0440\u0430\u0441\u0435\u043d\u0438 \u0413\u0430\u0432\u0440\u0438\u043b \u0420\u0430\u0434\u0438\u043e\u043d\u043e\u0432\u0438\u0447",
+                            "_score": 6.782290935516357
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "farmatsea",
+                    "collection": "2021"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "64de499cb474bd5fcefbb45a"
+                            },
+                            "surname": "\u041a\u0430\u0440\u0430\u0441\u0435\u043d\u0438",
+                            "name": "\u0413\u0430\u0432\u0440\u0438\u043b",
+                            "middle_name": "\u0420\u0430\u0434\u0438\u043e\u043d\u043e\u0432\u0438\u0447",
+                            "phone": "+79505246441",
+                            "area": "\u0425\u0430\u043d\u0442\u044b-\u041c\u0430\u043d\u0441\u0438\u0439\u0441\u043a\u0438\u0439 \u0410\u041e - \u042e\u0433\u0440\u0430",
+                            "source": "\u0441\u0431\u0435\u0440\u0431\u0430\u043d\u043a",
+                            "_score": 7.349164962768555
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "gemotest",
+                    "collection": "users_2021"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "64b4c3086abf3d0b877069ba"
+                            },
+                            "gemotest_id": "18115602",
+                            "surname": "\u041a\u0430\u0440\u0430\u0441\u0435\u043d\u0438",
+                            "name": "\u0413\u0430\u0432\u0440\u0438\u043b",
+                            "middle_name": "\u0420\u0430\u0434\u0438\u043e\u043d\u043e\u0432\u0438\u0447",
+                            "birth_date": "06.09.1972",
+                            "gender": "\u041c\u0443\u0436\u0441\u043a\u043e\u0439",
+                            "phone": "+79505246441",
+                            "email": "uttpokah@mail.ru",
+                            "address_city": "\u041f\u043e\u043a\u0430\u0447\u0438",
+                            "address_street": "\u041a\u0435\u0434\u0440\u043e\u0432\u0430\u044f \u0443\u043b, \u0434\u043e\u043c \u2116 8",
+                            "created_at": "2020-10-10",
+                            "citizenship": "1",
+                            "actual_region": "\u041f\u043e\u043a\u0430\u0447\u0438",
+                            "actual_address": "\u0425\u0430\u043d\u0442\u044b-\u041c\u0430\u043d\u0441\u0438\u0439\u0441\u043a\u0438\u0439 \u0410\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433 - \u042e\u0433\u0440\u0430 \u0410\u041e, \u041f\u043e\u043a\u0430\u0447\u0438 \u0433, \u041a\u0435\u0434\u0440\u043e\u0432\u0430\u044f \u0443\u043b, \u0434\u043e\u043c \u2116 8",
+                            "_score": 5.153809547424316
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "nalog_gov_ru",
+                    "collection": "2022"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "65019dee3dd6df39422427bc"
+                            },
+                            "surname": "\u041a\u0430\u0440\u0430\u0441\u0435\u043d\u0438",
+                            "name": "\u0413\u0430\u0432\u0440\u0438\u043b",
+                            "middle_name": "\u0420\u0430\u0434\u0438\u043e\u043d\u043e\u0432\u0438\u0447",
+                            "birth_date": "06.09.1972",
+                            "phone": "+79505246441",
+                            "inn": "862100068045",
+                            "_score": 7.814446449279785
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "numbuster",
+                    "collection": "2018"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "64c92f79a5aab5692e2bd896"
+                            },
+                            "date": "13.01.2019",
+                            "region": "XantyMansi",
+                            "phone": "+79505246441",
+                            "tags": [
+                                "\u041a\u0435\u0434\u0440\u043e\u0432\u0430\u044f 8 \u0413\u0435\u043d\u0430",
+                                "\u0413\u0435\u043d\u0430 \u0410\u0433\u0440\u0435\u0433\u0430\u0442"
+                            ],
+                            "_score": 7.528876304626465
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "red_white",
+                    "collection": "users"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": 3627907,
+                            "full_name": "\u041a\u0430\u0440\u0430\u0441\u0435\u043d\u0438 \u0413\u0430\u0432\u0440\u0438\u043b \u0420\u0430\u0434\u0438\u043e\u043d\u043e\u0432\u0438\u0447",
+                            "birth_date": "06.09.1972",
+                            "phone": "+79505246441",
+                            "_score": 7.355445861816406
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "sportmaster",
+                    "collection": "100mln"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "63b97db6925e6c17a23207a4"
+                            },
+                            "first_name": "\u0413\u0430\u0432\u0440\u0438\u043b",
+                            "sex": "1",
+                            "phone": "+79505246441",
+                            "city": "\u041f\u043e\u043a\u0430\u0447\u0438",
+                            "street": "\u041a\u0435\u0434\u0440\u043e\u0432\u0430\u044f",
+                            "house": "8",
+                            "want_receive_info": "1",
+                            "updated": "2013-10-28 00:06:37.000",
+                            "birth_date": "06.09.1972",
+                            "_score": 9.039259910583496
+                        }
+                    ]
+                }
+            },
+            {
+                "source": {
+                    "database": "tele2-loyalty",
+                    "collection": "users_2022"
+                },
+                "hits": {
+                    "hitsCount": 1,
+                    "tooManyDocs": false,
+                    "count": 1,
+                    "items": [
+                        {
+                            "_id": {
+                                "$oid": "62f2971fb8559f27b905a3d2"
+                            },
+                            "phone": "+79505246441",
+                            "email": "test@test.ru",
+                            "name": "",
+                            "birthday": "",
+                            "qr": "",
+                            "_score": 9.053186416625977
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
