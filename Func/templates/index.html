@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Пошук за номерами</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #3498db;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 24px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: fixed;
+      margin-top: 20px;
+    }
+    td, th {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+    td.copyable:hover {
+      background-color: #e0f7fa;
+      cursor: pointer;
+    }
+    textarea {
+      resize: none;
+      width: 100%;
+      height: 30px;
+      box-sizing: border-box;
+    }
+    .copy-row-btn {
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .copy-row-btn:hover {
+      background-color: #2980b9;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .error-box {
+      margin-top: 20px;
+      color: red;
+      font-weight: bold;
+      white-space: pre-line;
+    }
+    .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #3498db;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 2s linear infinite;
+      margin: 20px auto;
+      display: none;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Пошук за номерами
+  </header>
+
+  <div class="container">
+    <div class="button-container">
+      <button onclick="main()">Почати пошук</button>
+      <button onclick="clearTable()">Очистити</button>
+      <button onclick="sortTable()">Сортувати</button>
+    </div>
+
+    <table id="search-table">
+      <thead>
+        <tr>
+          <th>Номер телефону</th>
+          <th>Прізвище</th>
+          <th>Ім’я</th>
+          <th>По батькові</th>
+          <th>Дата народження</th>
+          <th>Copy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <script>
+          for (let i = 0; i < 40; i++) {
+            document.write('<tr>' +
+              `<td><textarea></textarea></td>` +
+              `<td class="copyable"></td>` +
+              `<td class="copyable"></td>` +
+              `<td class="copyable"></td>` +
+              `<td class="copyable"></td>` +
+              `<td><button class="copy-row-btn" onclick="copyRow(this)">Copy</button></td>` +
+            '</tr>');
+          }
+        </script>
+      </tbody>
+    </table>
+
+    <div class="error-box" id="error-box"></div>
+    <div class="loader" id="loader"></div>
+  </div>
+
+  <script>
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function realApiSearch(phone) {
+      const res = await fetch(`/api/search?phone=${encodeURIComponent(phone)}`);
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Помилка пошуку");
+      }
+
+      return {
+        lastName: data.surname,
+        firstName: data.name,
+        patronymic: data.patronymic,
+        dob: data.dob
+      };
+    }
+
+    async function main() {
+      const table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
+      const errorBox = document.getElementById("error-box");
+      const loader = document.getElementById("loader");
+      errorBox.innerText = "";
+
+      // Показуємо лоадер
+      loader.style.display = "block";
+
+      for (let row of table.rows) {
+        const phone = row.cells[0].querySelector("textarea").value.trim();
+
+        if (phone) {
+          try {
+            const data = await realApiSearch(phone);
+            row.cells[1].innerText = data.lastName;
+            row.cells[2].innerText = data.firstName;
+            row.cells[3].innerText = data.patronymic;
+            row.cells[4].innerText = data.dob;
+            await sleep(500);
+          } catch (err) {
+            console.error(err);
+            errorBox.innerText += `\nПомилка для номера ${phone}: ${err.message}`;
+          }
+        }
+      }
+
+      // Сховуємо лоадер після завершення пошуку
+      loader.style.display = "none";
+    }
+
+    function clearTable() {
+      const table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
+      const errorBox = document.getElementById("error-box");
+      errorBox.innerText = "";
+
+      for (let row of table.rows) {
+        row.cells[0].querySelector("textarea").value = "";
+        for (let i = 1; i <= 4; i++) {
+          row.cells[i].innerText = "";
+          row.cells[i].style.backgroundColor = "#f9f9f9";
+        }
+      }
+    }
+
+    function sortTable() {
+      const table = document.getElementById("search-table").getElementsByTagName("tbody")[0];
+      const rows = Array.from(table.rows);
+
+      rows.sort((a, b) => {
+        const filledA = [...a.cells].slice(1, 5).filter(cell => cell.innerText.trim() !== "").length;
+        const filledB = [...b.cells].slice(1, 5).filter(cell => cell.innerText.trim() !== "").length;
+        return filledB - filledA;
+      });
+
+      table.innerHTML = '';
+      rows.forEach(row => table.appendChild(row));
+    }
+
+    function copyRow(button) {
+      const row = button.closest('tr');
+      const values = Array.from(row.cells).slice(1, 5).map(cell => cell.innerText.trim());
+      const textToCopy = values.join(' ');
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        button.style.backgroundColor = '#d0ffd0';
+        setTimeout(() => button.style.backgroundColor = '', 500);
+      });
+    }
+
+    document.querySelectorAll('.copyable').forEach(cell => {
+      cell.addEventListener('click', () => {
+        navigator.clipboard.writeText(cell.innerText).then(() => {
+          cell.style.backgroundColor = '#d0ffd0';
+          setTimeout(() => cell.style.backgroundColor = '#f9f9f9', 500);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
